@@ -1,0 +1,81 @@
+problema 1
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TEMPORIZATOR</title>
+</head>
+<body>
+	<h1>TEMPORIZATOR</h1>
+	<br><br>
+    <input type="number" id="in">
+	<-introduceti o valoare
+	<div>
+        <p id="content"></p>
+    </div>
+    <button onclick="countdown()">Start Clock!</button>
+</body>
+<script>
+    
+    function countdown(){    
+        var timeleft = document.getElementById("in").value;
+        var clock = setInterval(function(){
+            if(timeleft <= 0){
+                clearInterval(clock);
+                document.getElementById("content").innerHTML = "Gata!";
+            } else {
+                document.getElementById("content").innerHTML = timeleft + " secunde ramase";
+            }
+            timeleft -= 1;
+        }, 1000);
+    }
+
+</script>
+</html>
+
+
+problema 2
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title align="center">INTERSECTIE</title>
+</head>
+<body background="2.jpg">
+	<h1 style="color: red;">INTERSECTIE</h1>
+    <label for="multime1">Introduceti elementele din prima multime separate prin virgula(",")</label><br>
+    <input type="text" id="in1" name="multime1"><br>
+    
+    <label for="multime2">Introduceti elementele din a doua multime separate prin virgula(",")</label><br>
+    <input type="text" id="in2" name="multime2">
+
+    <p>Intersectia celor 2 multimi este multimea:</p><br>
+    <p id="intersectie"></p>
+
+    <button onclick="intersect()">Fa intersectia</button>
+</body>
+
+<script>
+    function intersect(){
+        var m1 = document.getElementById("in1").value.split(',');
+        var m2 = document.getElementById("in2").value.split(',');
+        let inter = new Set();
+        let final = [];
+        for(let i=0;i<m1.length;i++){
+            for(let j=0;j<m2.length;j++){
+                if(m1[i]==m2[j]){
+                    inter.add(m1[i]);
+                }
+            }
+        }
+        
+        for(const nr of inter){
+            final.push(nr);
+        }
+
+        document.getElementById("intersectie").innerHTML=final;
+		}
+</script>
+</html>
